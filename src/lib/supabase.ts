@@ -57,3 +57,12 @@ export interface SkillProgress {
   xp: number;
   updated_at: string;
 }
+
+export interface Reflection {
+  id: string;
+  user_id: string;
+  question: string;
+  answer: string;
+  created_at: string;
+  updated_at: string;
+}

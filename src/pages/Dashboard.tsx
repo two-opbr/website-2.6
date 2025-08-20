@@ -11,6 +11,7 @@ import StreakSystem from '../components/StreakSystem';
 import BossQuest from '../components/BossQuest';
 import ReflectionCompanion from '../components/ReflectionCompanion';
 import QuestLog from '../components/QuestLog';
+import QASection from '../components/QASection';
 import { 
   User, 
   Target, 
@@ -30,7 +31,8 @@ import {
   Flame,
   Settings,
   Crown,
-  BookOpen
+  BookOpen,
+  MessageCircle
 } from 'lucide-react';
 
 const Dashboard = () => {
@@ -99,6 +101,7 @@ const Dashboard = () => {
     { id: 'dashboard', name: 'Dashboard', icon: Target },
     { id: 'skills', name: 'Mastery Tree', icon: TrendingUp },
     { id: 'boss', name: 'Boss Quests', icon: Crown },
+    { id: 'qa', name: 'Reflections', icon: MessageCircle },
     { id: 'log', name: 'Quest Log', icon: BookOpen },
     { id: 'profile', name: 'Profile', icon: Settings }
   ];
@@ -418,6 +421,9 @@ const Dashboard = () => {
 
         {/* Quest Log Tab */}
         {activeTab === 'log' && <QuestLog />}
+
+        {/* Q&A Section Tab */}
+        {activeTab === 'qa' && <QASection />}
 
         {/* Profile Tab */}
         {activeTab === 'profile' && <UserProfile />}
