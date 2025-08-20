@@ -410,7 +410,7 @@ const Dashboard = () => {
                 <h3 className="text-2xl font-bold text-white mb-4">Boss Quests Coming Soon</h3>
                 <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
                   Our AI sensei is analyzing your profile and progress to generate personalized boss challenges.
-                </div>
+                </p>
               </div>
             )}
           </div>

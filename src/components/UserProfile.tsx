@@ -1,1 +1,12 @@
-{"code":"rate-limited","message":"You have hit the rate limit. Please upgrade to keep chatting.","providerLimitHit":false,"isRetryable":true}
+import React from 'react';
+
+const UserProfile: React.FC = () => {
+  return (
+    <div>
+      {/* User profile content goes here */}
+      <p>User Profile Component</p>
+    </div>
+  );
+};
+
+export default UserProfile;
