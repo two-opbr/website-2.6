@@ -19,6 +19,14 @@ export interface User {
   avatar_emoji?: string;
   created_at: string;
   updated_at: string;
+  mission_statement?: string;
+  biggest_dream?: string;
+  daily_routine?: string;
+  greatest_strength?: string;
+  biggest_weakness?: string;
+  ideal_day?: string;
+  biggest_challenge?: string;
+  motivation_source?: string;
 }
 
 export interface Quest {
