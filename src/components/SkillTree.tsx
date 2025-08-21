@@ -67,8 +67,8 @@ const SkillTree = () => {
   const getNodePosition = (angle: number, radius: number) => {
     const radian = (angle * Math.PI) / 180;
     return {
-      x: Math.cos(radian) * radius,
-      y: Math.sin(radian) * radius
+      x: Math.cos(radian) * radius + 192, // 192 = 384/2 (half of container width)
+      y: Math.sin(radian) * radius + 192  // 192 = 384/2 (half of container height)
     };
   };
 
@@ -80,13 +80,17 @@ const SkillTree = () => {
       </div>
       
       <div className="flex justify-center">
-        <div className="relative w-96 h-96 bg-gradient-to-br from-gray-900/50 to-slate-900/20 border border-cyan-500/20 rounded-full">
+        <div className="relative w-96 h-96 bg-gradient-to-br from-gray-900/50 to-slate-900/20 border border-cyan-500/20 rounded-full overflow-hidden">
           {/* Central User Node */}
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full flex items-center justify-center border-4 border-white/20"
+            className="absolute w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full flex items-center justify-center border-4 border-white/20"
+            style={{
+              left: '176px', // 192 - 16/2 = 184px for perfect center
+              top: '176px'
+            }}
           >
             <span className="text-2xl">🎯</span>
           </motion.div>
@@ -101,29 +105,30 @@ const SkillTree = () => {
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer"
+                className="absolute group cursor-pointer"
                 style={{
-                  left: `calc(50% + ${position.x}px)`,
-                  top: `calc(50% + ${position.y}px)`
+                  left: `${position.x - 24}px`, // 24 = 48/2 (half of node width)
+                  top: `${position.y - 24}px`   // 24 = 48/2 (half of node height)
                 }}
               >
                 {/* Connection Line */}
                 <svg
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                  width="160"
-                  height="160"
-                  style={{
-                    transform: `translate(-50%, -50%) rotate(${skill.angle}deg)`
+                  className="absolute pointer-events-none"
+                  width="200"
+                  height="200"
+                  style={{ 
+                    left: '-76px', // Center the SVG on the node
+                    top: '-76px'
                   }}
                 >
                   <motion.line
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 1, delay: index * 0.2 }}
-                    x1="80"
-                    y1="80"
-                    x2="20"
-                    y2="80"
+                    x1="100"
+                    y1="100"
+                    x2={100 - Math.cos((skill.angle * Math.PI) / 180) * 140}
+                    y2={100 - Math.sin((skill.angle * Math.PI) / 180) * 140}
                     stroke="#374151"
                     strokeWidth="2"
                   />
